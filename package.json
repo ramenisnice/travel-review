@@ -11,6 +11,7 @@
     "core-js": "^3.8.3",
     "stylus": "^0.59.0",
     "stylus-loader": "^7.0.0",
+    "swiper": "^8.3.2",
     "vue": "^3.2.13",
     "vue-router": "^4.1.4"
   },
