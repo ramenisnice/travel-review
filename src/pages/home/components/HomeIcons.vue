@@ -92,7 +92,7 @@ export default {
 <style lang="stylus" scoped>
 @import "~@/assets/styles/variables.styl";
 @import "~@/assets/styles/mixins.styl";
-.icons >>> .swiper-slide
+.icons:deep(.swiper-slide)
   overflow: hidden
   height: 0
   padding-bottom: 50%

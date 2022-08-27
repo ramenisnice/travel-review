@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.wrapper >>> .swiper-pagination-bullet-active
+.wrapper:deep(.swiper-pagination-bullet-active)
   background-color: #fff
 .wrapper
   overflow: hidden
