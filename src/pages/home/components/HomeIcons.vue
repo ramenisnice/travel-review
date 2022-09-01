@@ -4,7 +4,7 @@
       <SwiperSlide v-for="(page, idx) in swiperList" :key="idx">
         <div class="icon" v-for="item in page" :key="item.id">
           <div class="icon-img">
-            <img class="icon-img-content" :src="item.imgURL" />
+            <img class="icon-img-content" :src="item.imgUrl" />
           </div>
           <p class="icon-desc">{{ item.desc }}</p>
         </div>
@@ -15,66 +15,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      iconList: [
-        {
-          id: "0001",
-          imgURL:
-            "http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png",
-          desc: "景点门票",
-        },
-        {
-          id: "0002",
-          imgURL:
-            "http://img1.qunarzz.com/piao/fusion/1711/df/86cbcfc533330d02.png",
-          desc: "滑雪季",
-        },
-        {
-          id: "0003",
-          imgURL:
-            "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png",
-          desc: "泡温泉",
-        },
-        {
-          id: "0004",
-          imgURL:
-            "http://img1.qunarzz.com/piao/fusion/1611/35/2640cab202c41b02.png",
-          desc: "动植园",
-        },
-        {
-          id: "0005",
-          imgURL:
-            "http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png",
-          desc: "景点门票",
-        },
-        {
-          id: "0006",
-          imgURL:
-            "http://img1.qunarzz.com/piao/fusion/1711/df/86cbcfc533330d02.png",
-          desc: "滑雪季",
-        },
-        {
-          id: "0007",
-          imgURL:
-            "http://img1.qunarzz.com/piao/fusion/1710/a6/83f636bd75ae6302.png",
-          desc: "泡温泉",
-        },
-        {
-          id: "0008",
-          imgURL:
-            "http://img1.qunarzz.com/piao/fusion/1611/35/2640cab202c41b02.png",
-          desc: "动植园",
-        },
-        {
-          id: "0009",
-          imgURL:
-            "http://img1.qunarzz.com/piao/fusion/1611/35/2640cab202c41b02.png",
-          desc: "动植园",
-        },
-      ],
-    };
-  },
+  props: ["iconList"],
   computed: {
     swiperList() {
       const list = [];

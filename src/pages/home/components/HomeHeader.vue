@@ -8,10 +8,16 @@
       输入城市/景点/游玩主题
     </div>
     <div class="header-right">
-      城市<span class="iconfont arrow-icon">&#xe64a;</span>
+      {{ city }}<span class="iconfont arrow-icon">&#xe64a;</span>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["city"],
+};
+</script>
 
 <style lang="stylus" scoped>
 // 1rem = 50px

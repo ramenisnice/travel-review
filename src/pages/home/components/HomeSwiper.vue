@@ -5,9 +5,10 @@
       :loop="true"
       :modules="modules"
       class="mySwiper"
+      v-if="hasSwiperItems"
     >
       <SwiperSlide v-for="img in swiperList" :key="img.id">
-        <img class="swiper-img" :src="img.imgURL" />
+        <img class="swiper-img" :src="img.imgUrl" />
       </SwiperSlide>
     </SwiperWrap>
   </div>
@@ -16,21 +17,11 @@
 <script>
 import { Pagination } from "swiper";
 export default {
-  data() {
-    return {
-      swiperList: [
-        {
-          id: "0001",
-          imgURL:
-            "http://img1.qunarzz.com/piao/fusion/1801/1a/94428c6dea109402.jpg_640x200_2cf590d8.jpg",
-        },
-        {
-          id: "0002",
-          imgURL:
-            "http://img1.qunarzz.com/piao/fusion/1802/42/7c92b9a381e46402.jpg_640x200_1cdce2a4.jpg",
-        },
-      ],
-    };
+  props: ["swiperList"],
+  computed: {
+    hasSwiperItems() {
+      return this.swiperList.length > 0;
+    },
   },
   setup() {
     return {
