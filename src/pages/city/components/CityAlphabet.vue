@@ -1,20 +1,18 @@
 <template>
-  <div class="alphabet">
-    <ul class="list">
-      <li class="item">A</li>
-      <li class="item">B</li>
-      <li class="item">C</li>
-      <li class="item">A</li>
-      <li class="item">B</li>
-      <li class="item">C</li>
-      <li class="item">A</li>
-      <li class="item">B</li>
-      <li class="item">C</li>
-      <li class="item">A</li>
-      <li class="item">B</li>
-      <li class="item">C</li>
-    </ul>
-  </div>
+  <ul class="list">
+    <li class="item">A</li>
+    <li class="item">B</li>
+    <li class="item">C</li>
+    <li class="item">A</li>
+    <li class="item">B</li>
+    <li class="item">C</li>
+    <li class="item">A</li>
+    <li class="item">B</li>
+    <li class="item">C</li>
+    <li class="item">A</li>
+    <li class="item">B</li>
+    <li class="item">C</li>
+  </ul>
 </template>
 
 <style lang="stylus" scoped>
