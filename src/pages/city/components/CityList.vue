@@ -5,44 +5,28 @@
       <div class="area">
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
-          <div class="button">北京</div>
+          <div class="button">{{ currCity }}</div>
         </div>
       </div>
       <!-- 热门城市区域 -->
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button">北京</div>
-          <div class="button">北京</div>
-          <div class="button">北京</div>
-          <div class="button">北京</div>
-          <div class="button">北京</div>
+          <div class="button" v-for="city in hotCities" :key="city.id">
+            {{ city.name }}
+          </div>
         </div>
       </div>
       <!-- 字母区域 -->
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
-        <div class="alphabet-item border-bottom">阿克苏</div>
+      <div class="area" v-for="(val, idx) in cities" :key="idx">
+        <div class="title border-topbottom">{{ idx }}</div>
+        <div
+          class="alphabet-item border-bottom"
+          v-for="city in val"
+          :key="city.id"
+        >
+          {{ city.name }}
+        </div>
       </div>
     </div>
   </div>
@@ -51,8 +35,12 @@
 <script>
 import BScroll from "@better-scroll/core";
 export default {
+  props: ["currCity", "hotCities", "cities"],
   mounted() {
     this.bs = new BScroll(this.$refs.wrapper);
+  },
+  updated() {
+    this.bs.refresh();
   },
 };
 </script>

@@ -1,19 +1,14 @@
 <template>
   <ul class="list">
-    <li class="item">A</li>
-    <li class="item">B</li>
-    <li class="item">C</li>
-    <li class="item">A</li>
-    <li class="item">B</li>
-    <li class="item">C</li>
-    <li class="item">A</li>
-    <li class="item">B</li>
-    <li class="item">C</li>
-    <li class="item">A</li>
-    <li class="item">B</li>
-    <li class="item">C</li>
+    <li class="item" v-for="(val, idx) in cities" :key="idx">{{ idx }}</li>
   </ul>
 </template>
+
+<script>
+export default {
+  props: ["cities"],
+};
+</script>
 
 <style lang="stylus" scoped>
 .list
