@@ -1,50 +1,61 @@
 <template>
-  <div class="list">
-    <!-- 当前城市区域 -->
-    <div class="area">
-      <div class="title border-topbottom">当前城市</div>
-      <div class="button-list">
-        <div class="button">北京</div>
+  <div class="list" ref="wrapper">
+    <div>
+      <!-- 当前城市区域 -->
+      <div class="area">
+        <div class="title border-topbottom">当前城市</div>
+        <div class="button-list">
+          <div class="button">北京</div>
+        </div>
       </div>
-    </div>
-    <!-- 热门城市区域 -->
-    <div class="area">
-      <div class="title border-topbottom">热门城市</div>
-      <div class="button-list">
-        <div class="button">北京</div>
-        <div class="button">北京</div>
-        <div class="button">北京</div>
-        <div class="button">北京</div>
-        <div class="button">北京</div>
+      <!-- 热门城市区域 -->
+      <div class="area">
+        <div class="title border-topbottom">热门城市</div>
+        <div class="button-list">
+          <div class="button">北京</div>
+          <div class="button">北京</div>
+          <div class="button">北京</div>
+          <div class="button">北京</div>
+          <div class="button">北京</div>
+        </div>
       </div>
-    </div>
-    <!-- 字母区域 -->
-    <div class="area">
-      <div class="title border-topbottom">A</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-    </div>
-    <div class="area">
-      <div class="title border-topbottom">A</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-    </div>
-    <div class="area">
-      <div class="title border-topbottom">A</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
-      <div class="alphabet-item border-bottom">阿克苏</div>
+      <!-- 字母区域 -->
+      <div class="area">
+        <div class="title border-topbottom">A</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+      </div>
+      <div class="area">
+        <div class="title border-topbottom">A</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+      </div>
+      <div class="area">
+        <div class="title border-topbottom">A</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+        <div class="alphabet-item border-bottom">阿克苏</div>
+      </div>
     </div>
   </div>
 </template>
+
+<script>
+import BScroll from "@better-scroll/core";
+export default {
+  mounted() {
+    this.bs = new BScroll(this.$refs.wrapper);
+  },
+};
+</script>
 
 <style lang="stylus" scoped>
 .list
@@ -54,7 +65,6 @@
     left: 0
     right: 0
     bottom: 0
-    background: red
     .title
         line-height: .54rem
         padding-left: .2rem
