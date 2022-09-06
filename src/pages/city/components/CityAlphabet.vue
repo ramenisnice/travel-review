@@ -21,6 +21,8 @@ export default {
   data() {
     return {
       touchStatus: false,
+      startY: 0,
+      timer: null,
     };
   },
   computed: {
@@ -28,6 +30,9 @@ export default {
       const letters = Object.keys(this.cities);
       return letters;
     },
+  },
+  updated() {
+    this.startY = this.$refs["A"][0].offsetTop;
   },
   methods: {
     handleLetterClick(e) {
@@ -39,16 +44,18 @@ export default {
     },
     handleTouchMove(e) {
       if (this.touchStatus) {
-        const startY = this.$refs["A"][0].offsetTop; //offsetTop是DOM元素到它parent顶部的距离
-        const touchY = e.touches[0].clientY; //touch事件的clientY是到视口顶部的距离
-        const distance = touchY - startY - 79;
-        const endLetterIdx = Math.floor(distance / 20);
-
-        if (endLetterIdx >= 0 && endLetterIdx <= 21) {
-          console.log(endLetterIdx);
-          const endLetter = this.letters[endLetterIdx];
-          this.$emit("letter-change", endLetter);
-        }
+        if (this.timer) clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+          //offsetTop是DOM元素到它parent顶部的距离
+          const touchY = e.touches[0].clientY; //touch事件的clientY是到视口顶部的距离
+          const distance = touchY - this.startY - 79;
+          const endLetterIdx = Math.floor(distance / 20);
+          if (endLetterIdx >= 0 && endLetterIdx <= 21) {
+            console.log(endLetterIdx);
+            const endLetter = this.letters[endLetterIdx];
+            this.$emit("letter-change", endLetter);
+          }
+        }, 16);
       }
     },
     handleTouchEnd() {
