@@ -1,6 +1,6 @@
 <template>
   <CityHeader />
-  <CitySearch />
+  <CitySearch :cities="cities" />
   <CityList
     :curr-city="currCity"
     :hot-cities="hotCities"
