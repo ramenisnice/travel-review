@@ -1,8 +1,13 @@
 <template>
   <CityHeader />
   <CitySearch />
-  <CityList :curr-city="currCity" :hot-cities="hotCities" :cities="cities" />
-  <CityAlphabet :cities="cities" />
+  <CityList
+    :curr-city="currCity"
+    :hot-cities="hotCities"
+    :cities="cities"
+    :letter="letter"
+  />
+  <CityAlphabet :cities="cities" @letter-change="handleLetterChange" />
 </template>
 
 <script>
@@ -18,6 +23,7 @@ export default {
       currCity: "",
       hotCities: [],
       cities: {},
+      letter: "",
     };
   },
   methods: {
@@ -29,6 +35,9 @@ export default {
         this.hotCities = res.hotCities;
         this.cities = res.cities;
       }
+    },
+    handleLetterChange(letter) {
+      this.letter = letter;
     },
   },
   mounted() {

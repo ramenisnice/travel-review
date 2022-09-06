@@ -19,7 +19,7 @@
       </div>
       <!-- 字母区域 -->
       <div class="area" v-for="(val, idx) in cities" :key="idx">
-        <div class="title border-topbottom">{{ idx }}</div>
+        <div class="title border-topbottom" :ref="idx">{{ idx }}</div>
         <div
           class="alphabet-item border-bottom"
           v-for="city in val"
@@ -35,12 +35,19 @@
 <script>
 import BScroll from "@better-scroll/core";
 export default {
-  props: ["currCity", "hotCities", "cities"],
+  props: ["currCity", "hotCities", "cities", "letter"],
   mounted() {
     this.bs = new BScroll(this.$refs.wrapper);
   },
   updated() {
     this.bs.refresh();
+  },
+  watch: {
+    letter() {
+      if (this.letter) {
+        this.bs.scrollToElement(this.$refs[this.letter][0]);
+      }
+    },
   },
 };
 </script>
