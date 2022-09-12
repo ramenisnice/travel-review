@@ -12,7 +12,12 @@
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button" v-for="city in hotCities" :key="city.id">
+          <div
+            class="button"
+            v-for="city in hotCities"
+            :key="city.id"
+            @click="handleCityClick(city.name)"
+          >
             {{ city.name }}
           </div>
         </div>
@@ -24,6 +29,7 @@
           class="alphabet-item border-bottom"
           v-for="city in val"
           :key="city.id"
+          @click="handleCityClick(city.name)"
         >
           {{ city.name }}
         </div>
@@ -35,9 +41,22 @@
 <script>
 import BScroll from "@better-scroll/core";
 export default {
-  props: ["currCity", "hotCities", "cities", "letter"],
+  props: ["hotCities", "cities", "letter"],
+  methods: {
+    handleCityClick(city) {
+      this.$store.dispatch("changeCity", city);
+      this.$router.push("/");
+    },
+  },
+  computed: {
+    currCity() {
+      return this.$store.state.city;
+    },
+  },
   mounted() {
-    this.bs = new BScroll(this.$refs.wrapper);
+    this.bs = new BScroll(this.$refs.wrapper, {
+      click: true,
+    });
   },
   updated() {
     this.bs.refresh();

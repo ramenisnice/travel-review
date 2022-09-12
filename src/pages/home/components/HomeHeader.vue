@@ -15,7 +15,11 @@
 
 <script>
 export default {
-  props: ["city"],
+  computed: {
+    city() {
+      return this.$store.state.city;
+    },
+  },
 };
 </script>
 

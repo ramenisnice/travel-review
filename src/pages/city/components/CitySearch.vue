@@ -15,6 +15,7 @@
           class="search-item border-bottom"
           v-for="resEl in resList"
           :key="resEl.id"
+          @click="handleCityClick(resEl.name)"
         >
           {{ resEl.name }}
         </li>
@@ -36,6 +37,12 @@ export default {
       resList: [],
       timer: null,
     };
+  },
+  methods: {
+    handleCityClick(city) {
+      this.$store.dispatch("changeCity", city);
+      this.$router.push("/");
+    },
   },
   watch: {
     keyword() {
@@ -61,7 +68,9 @@ export default {
     },
   },
   mounted() {
-    this.bs = new BScroll(".wrapper");
+    this.bs = new BScroll(".wrapper", {
+      click: true,
+    });
   },
   updated() {
     this.bs.refresh();

@@ -1,12 +1,7 @@
 <template>
   <CityHeader />
   <CitySearch :cities="cities" />
-  <CityList
-    :curr-city="currCity"
-    :hot-cities="hotCities"
-    :cities="cities"
-    :letter="letter"
-  />
+  <CityList :hot-cities="hotCities" :cities="cities" :letter="letter" />
   <CityAlphabet :cities="cities" @letter-change="handleLetterChange" />
 </template>
 
@@ -20,7 +15,6 @@ export default {
   components: { CityHeader, CitySearch, CityList, CityAlphabet },
   data() {
     return {
-      currCity: "",
       hotCities: [],
       cities: {},
       letter: "",
@@ -31,7 +25,6 @@ export default {
       const { data } = await axios.get("/api/city.json");
       if (data.ret && data.data) {
         const res = data.data;
-        this.currCity = res.city;
         this.hotCities = res.hotCities;
         this.cities = res.cities;
       }
