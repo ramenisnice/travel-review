@@ -1,22 +1,14 @@
 import { createStore } from "vuex";
+import stateObj from "./state.js";
+import mutations from "./mutations.js";
+import actions from "./actions.js";
 
 const store = createStore({
   state() {
-    return {
-      city: localStorage.getItem("city") || "北京",
-    };
+    return stateObj;
   },
-  mutations: {
-    changeCity(state, payload) {
-      state.city = payload;
-      localStorage.setItem("city", payload);
-    },
-  },
-  actions: {
-    changeCity(context, city) {
-      context.commit("changeCity", city);
-    },
-  },
+  mutations,
+  actions,
 });
 
 export default store;
