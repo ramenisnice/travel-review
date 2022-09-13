@@ -51,11 +51,10 @@ export default {
           const distance = touchY - this.startY - 79;
           const endLetterIdx = Math.floor(distance / 20);
           if (endLetterIdx >= 0 && endLetterIdx <= 21) {
-            console.log(endLetterIdx);
             const endLetter = this.letters[endLetterIdx];
             this.$emit("letter-change", endLetter);
           }
-        }, 16);
+        }, 8);
       }
     },
     handleTouchEnd() {
