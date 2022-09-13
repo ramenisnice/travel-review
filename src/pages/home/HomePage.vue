@@ -13,11 +13,13 @@ import HomeIcons from "./components/HomeIcons.vue";
 import HomeRecommend from "./components/HomeRecommend.vue";
 import HomeWeekend from "./components/HomeWeekend.vue";
 import axios from "axios";
+import { mapState } from "vuex";
 
 export default {
   components: { HomeHeader, HomeSwiper, HomeIcons, HomeRecommend, HomeWeekend },
   data() {
     return {
+      lastCity: "",
       swiperList: [],
       iconList: [],
       recommendList: [],
@@ -26,7 +28,7 @@ export default {
   },
   methods: {
     async getHomeInfo() {
-      const { data } = await axios.get("/api/index.json");
+      const { data } = await axios.get(`/api/index.json?city=${this.city}`);
       if (data.ret) {
         let res = data.data;
         this.swiperList = res.swiperList;
@@ -36,8 +38,18 @@ export default {
       } else throw Error("Failed to fetch index data.");
     },
   },
+  computed: {
+    ...mapState(["city"]),
+  },
   mounted() {
+    this.lastCity = this.city;
     this.getHomeInfo();
+  },
+  activated() {
+    if (this.lastCity !== this.city) {
+      this.getHomeInfo();
+      this.lastCity = this.city;
+    }
   },
 };
 </script>
