@@ -4,6 +4,7 @@ import store from "./store/index.js";
 
 import App from "./App.vue";
 import CommonGallery from "./common/gallery/CommonGallery.vue";
+import FadeAnimation from "./common/fade/FadeAnimation.vue";
 import "@/assets/styles/reset.css";
 import "@/assets/styles/border.css";
 import "@/assets/styles/iconfont.css";
@@ -19,4 +20,5 @@ app.use(store);
 app.component("SwiperWrap", Swiper);
 app.component("SwiperSlide", SwiperSlide);
 app.component("CommonGallery", CommonGallery);
+app.component("FadeAnimation", FadeAnimation);
 app.mount("#app");

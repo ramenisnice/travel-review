@@ -9,11 +9,13 @@
         </div>
       </div>
     </div>
-    <CommonGallery
-      :imgs="galleryImgs"
-      v-show="showGallery"
-      @close-gallery="handleGalleryClose"
-    />
+    <FadeAnimation>
+      <CommonGallery
+        :imgs="galleryImgs"
+        v-show="showGallery"
+        @close-gallery="handleGalleryClose"
+      />
+    </FadeAnimation>
   </div>
 </template>
 

@@ -28,7 +28,10 @@ export default {
       this.$router.push("/");
     },
     handleScroll() {
-      const top = document.documentElement.scrollTop; //垂直滑动了多少距离
+      const top =
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        window.pageYOffset; //垂直滑动了多少距离
       if (top > 60) {
         let opacity = top / 140; //动态渐隐渐显
         opacity = opacity > 1 ? 1 : opacity;
