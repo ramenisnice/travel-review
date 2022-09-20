@@ -49,7 +49,7 @@ export default {
   top: 0
   bottom: 0
   background: #000
-  z-index: 1
+  z-index: 3
   .wrapper:deep(.swiper)
     overflow: visible
   .wrapper:deep(.swiper-pagination)
