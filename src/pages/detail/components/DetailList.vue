@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="item" v-for="(item, idx) in list" :key="idx">
+    <div class="item" v-for="(item, idx) in ticketList" :key="idx">
       <div class="item-title border-bottom">
         <span class="item-title-icon"></span>
         {{ item.title }}
       </div>
       <div v-if="item.children" class="item-children">
-        <DetailList :list="item.children" />
+        <DetailList :ticketList="item.children" />
       </div>
     </div>
   </div>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  props: ["list"],
+  props: ["ticketList"],
 };
 </script>
 

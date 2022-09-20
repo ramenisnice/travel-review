@@ -1,13 +1,18 @@
 <template>
-  <DetailBanner />
+  <DetailBanner
+    :sightName="sightName"
+    :bannerImg="bannerImg"
+    :galleryImgs="galleryImgs"
+  />
   <DetailHeader />
-  <div class="content"><DetailList :list="list" /></div>
+  <div class="content"><DetailList :ticketList="ticketList" /></div>
 </template>
 
 <script>
 import DetailBanner from "./components/DetailBanner.vue";
 import DetailHeader from "./components/DetailHeader.vue";
 import DetailList from "./components/DetailList.vue";
+import axios from "axios";
 export default {
   components: {
     DetailBanner,
@@ -16,28 +21,30 @@ export default {
   },
   data() {
     return {
-      list: [
-        {
-          title: "成人票",
-          children: [
-            {
-              title: "成人三馆联票",
-              children: [{ title: "成人三馆联票 — 某一连锁店销售" }],
-            },
-            { title: "成人五馆联票" },
-          ],
-        },
-        {
-          title: "学生票",
-        },
-        {
-          title: "儿童票",
-        },
-        {
-          title: "特惠票",
-        },
-      ],
+      sightName: "",
+      bannerImg: "",
+      galleryImgs: [],
+      ticketList: [],
     };
+  },
+  methods: {
+    async getDetailInfo() {
+      const { data } = await axios.get("/api/detail.json", {
+        params: {
+          id: this.$route.params.itemId,
+        },
+      });
+      if (data.ret && data.data) {
+        const res = data.data;
+        this.sightName = res.sightName;
+        this.bannerImg = res.bannerImg;
+        this.galleryImgs = res.galleryImgs;
+        this.ticketList = res.categoryList;
+      }
+    },
+  },
+  activated() {
+    this.getDetailInfo();
   },
 };
 </script>

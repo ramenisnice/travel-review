@@ -20,6 +20,9 @@ const router = createRouter({
       component: DetailPage,
     },
   ],
+  scrollBehavior() {
+    return { top: 0 };
+  },
 });
 
 export default router;
