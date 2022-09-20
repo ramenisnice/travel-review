@@ -30,17 +30,20 @@ export default {
     handleScroll() {
       const top = document.documentElement.scrollTop; //垂直滑动了多少距离
       if (top > 60) {
-        let opacity = top / 140;
+        let opacity = top / 140; //动态渐隐渐显
         opacity = opacity > 1 ? 1 : opacity;
         this.opacityStyle = { opacity };
-        this.showAbs = false;
+        this.showAbs = false; //滑动页面 显示不同的header
       } else {
         this.showAbs = true;
       }
     },
   },
   activated() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll); //如何监听scroll事件
+  },
+  deactivated() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
 };
 </script>
