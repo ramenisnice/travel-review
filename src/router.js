@@ -5,7 +5,7 @@ import CityPage from "./pages/city/CityPage.vue";
 import DetailPage from "./pages/detail/DetailPage.vue";
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory("/travel-review/"),
   routes: [
     {
       path: "/",
@@ -18,6 +18,10 @@ const router = createRouter({
     {
       path: "/detail/:itemId",
       component: DetailPage,
+    },
+    {
+      path: "/:notFound(.*)",
+      redirect: "/",
     },
   ],
   scrollBehavior() {

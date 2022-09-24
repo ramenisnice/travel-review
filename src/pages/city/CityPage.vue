@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     async getCityInfo() {
-      const { data } = await axios.get("/api/city.json");
+      const { data } = await axios.get("api/city.json");
       if (data.ret && data.data) {
         const res = data.data;
         this.hotCities = res.hotCities;

@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     async getDetailInfo() {
-      const { data } = await axios.get("/api/detail.json", {
+      const { data } = await axios.get("api/detail.json", {
         params: {
           id: this.$route.params.itemId,
         },

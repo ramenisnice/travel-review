@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     async getHomeInfo() {
-      const { data } = await axios.get(`/api/index.json?city=${this.city}`);
+      const { data } = await axios.get(`api/index.json?city=${this.city}`);
       if (data.ret) {
         let res = data.data;
         this.swiperList = res.swiperList;
